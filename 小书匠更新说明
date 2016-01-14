@@ -1,14 +1,14 @@
 ---
-title: 1.8.0更新说明
-tags: 小书匠,更新
+title: Effective C++ (一)
+tags: C++,条款
 grammar_footnote: true
 grammar_cjkEmphasis: true
 grammar_cjkRuby: true
 ---
 
-# 1.8.0
+[TOC]
 
-## 1.8.0 _新功能_
+## 条款01:视 C++ 为一个语言联邦
 
 1. 启用新图标,新logo
 2. 添加插入表格按钮
