@@ -1,0 +1,60 @@
+---
+title: Effective C++ (二)
+tags: Effective,C++,析构函数,构造函数
+grammar_cjkRuby: true
+---
+
+
+[TOC]
+
+## 条款05:了解 `C++` 默默编写并调用哪些函数
+
+如果自己没有声明，编译期就会为它声明一个 `copy` 构造函数、一个 `copy assignment`操作符和一个析构函数，如果没有任何构造函数，编译期也会声明一个 `default` 构造函数，这些函数都是 `public` 且 `inline`
+
+![enter description here][1]
+
+当这些函数被调用的时候，它们才会被创建出来
+
+![enter description here][2]
+
+一般而言只有当生出的代码**合法**且**有适当机会证明它有意义**，编译器会生成 `copy assighment` 操作符
+
+
+
+## 条款06:若不想使用编译器自动生成的函数，明确拒绝
+
+将 `copy` 构造函数或 `copy assignment` 操作符声明为 `private`。阻止编译器暗自创建专属版本，可以防止被调用
+
+`member` 函数和 `friend` 函数还是可以被调用 `private` 函数，将成员函数声明为 `private` 而故意不实现它们，当被调用的时候，编译器会报错
+
+另一种，通过基础 `base class` 来实现
+
+![enter description here][3]
+
+
+
+## 条款07:为多态基类声明 `virtual` 析构函数
+
+`C++` 明白指出，当 `derived class` 对象经由一个 `base class` 指针被删除，该 `base class` 带着一个 `non-virtual` 析构函数，其结果未有定义--实际执行时通常发生的对象的 `derived` 成分没被销毁
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  [1]: ./images/1452864721063.jpg "1452864721063.jpg"
+  [2]: ./images/1452864793684.jpg "1452864793684.jpg"
+  [3]: ./images/1452866421462.jpg "1452866421462.jpg"
